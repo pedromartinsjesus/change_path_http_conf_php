@@ -95,9 +95,11 @@ public class ChangePath{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String newPath;  
 
-        System.out.println("Use / for subdirectory ");
-        System.out.println("If htdocs just press ENTER ");
-        System.out.println("Enter the path: ");
+      
+        System.out.println("\nUse / for subdirectory ");
+        System.out.println("\nFor htdocs just press ENTER ");
+        System.out.println();
+        System.out.print("\nEnter the path: ");
         newPath = br.readLine();
 
         
@@ -110,6 +112,11 @@ public class ChangePath{
          
          System.out.println("done");
                
+    }
+
+
+    private static void extracted() {
+        System.out.println();
     }    
 }
     

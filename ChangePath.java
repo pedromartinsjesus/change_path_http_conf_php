@@ -96,10 +96,10 @@ public class ChangePath{
         String newPath;  
 
       
-        System.out.println("\nUse / for subdirectory ");
-        System.out.println("\nFor htdocs just press ENTER ");
-        System.out.println();
-        System.out.print("\nEnter the path: ");
+        System.out.println("\n Use / for subdirectory ");
+        System.out.println("\n For htdocs just press ENTER ");
+        System.out.println("\n Current: " + oldDocumentRoot);
+        System.out.print("\n Enter the path: ");
         newPath = br.readLine();
 
         

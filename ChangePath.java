@@ -1,9 +1,12 @@
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 public class ChangePath{
+   
+   //Receive the path, oldString and the new One 
     static void modifyFile(String filePath, String oldString, String newString)
     {
         File fileToBeModified = new File(filePath);
@@ -60,12 +63,14 @@ public class ChangePath{
         }
     }
 
+
+    //Returns the current text on the file httpd.conf
     public static String findText(int lineNumberSearch) {
         
         String text = "";
         int lineNumber;
         try {
-          FileReader readfile = new FileReader("c:/Users/Awesome/Desktop/myfile.txt");
+          FileReader readfile = new FileReader("c:/xampp/apache/conf/httpd.conf");
           BufferedReader readbuffer = new BufferedReader(readfile);
           for (lineNumber = 1; lineNumber < 577; lineNumber++) {
             if (lineNumber == lineNumberSearch) {
@@ -84,20 +89,27 @@ public class ChangePath{
         //Encontra o texto que está na linha 261 que é a linha do document root 
         String oldDocumentRoot = findText(261); //DocumentRoot
         
-        
-        String directory = findText(262); //Directory 
+        //Encontra o texto que está na linha 262 que é a linha do directory 
+        String oldDirectory = findText(262); //Directory 
 
-        String newDocumentRoot = "DocumentRoot \"C:/xampp/htdocs/cursolaravel/\"";
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String newPath;  
 
-        /*  System.out.println(documentRoot);
-         System.out.println(directory); */
+        System.out.println("Use / for subdirectory ");
+        System.out.println("If htdocs just press ENTER ");
+        System.out.println("Enter the path: ");
+        newPath = br.readLine();
+
         
-        modifyFile("C:/Users/Awesome/Desktop/myFile.txt", oldDocumentRoot, newDocumentRoot);
+        String newDocumentRoot = "DocumentRoot \"C:/xampp/htdocs/"+newPath+"\"";
+        String newDirectory = "<Directory \"C:/xampp/htdocs/"+newPath+"\">";
+        
+        
+         modifyFile("C:/xampp/apache/conf/httpd.conf", oldDocumentRoot, newDocumentRoot);
+         modifyFile("C:/xampp/apache/conf/httpd.conf", oldDirectory, newDirectory);
          
-        System.out.println("done");  
-        
-
-
+         System.out.println("done");
+               
     }    
 }
     
